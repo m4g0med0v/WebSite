@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>RemoteLink</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo"><span class="red">Remote</span>Link</div>
+        <nav class="nav">
+            <a href="#features">Функции</a>
+            <a href="#pricing">Цены</a>
+            <a href="#contact">Контакты</a>
+        </nav>
+        <a href="#" class="cta-button" onclick="openModal(0)">Купить</a>
+    </header>
+
+    <section class="hero">
+        <h1>Удаленный доступ к вашему ПК — просто и безопасно!</h1>
+        <p class="grey">Работайте с любого устройства. Быстрое и защищенное соединение.</p>
+        <div class="hero-buttons">
+            <a href="#register" onclick="openModal(0)">Попробовать бесплатно</a>
+            <a href="#buy" onclick="openModal(1)">Купить сейчас</a>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="feature">
+            <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="Безопасность">
+            <h3>Безопасность</h3>
+            <p>Шифрование данных (256-bit AES). Двухфакторная аутентификация.</p>
+        </div>
+        <div class="feature">
+            <img src="https://cdn-icons-png.flaticon.com/512/1828/1828141.png" alt="Скорость">
+            <h3>Скорость</h3>
+            <p>Минимальная задержка даже при медленном интернете. Умный алгоритм передачи данных.</p>
+        </div>
+        <div class="feature">
+            <img src="https://cdn-icons-png.flaticon.com/512/3159/3159603.png" alt="Удобство">
+            <h3>Удобство</h3>
+            <p>Кроссплатформенность (Windows, macOS, Linux). Поддержка мобильных устройств.</p>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <h2>Выберите ваш тариф</h2>
+        <div class="pricing-table">
+            <div class="plan">
+                <h3>Бесплатный</h3>
+                <p>Ограниченные функции</p>
+                <p class="price">0₽</p>
+                <a href="#" class="select-btn" onclick="openModal(0)">Выбрать тариф</a>
+            </div>
+            <div class="plan">
+                <h3>Стандарт</h3>
+                <p>Оптимальный функционал</p>
+                <p class="price">499₽/мес</p>
+                <a href="#" class="select-btn" onclick="openModal(1)">Выбрать тариф</a>
+            </div>
+            <div class="plan">
+                <h3>Премиум</h3>
+                <p>Максимальные возможности</p>
+                <p class="price">999₽/мес</p>
+                <a href="#" class="select-btn" onclick="openModal(2)">Выбрать тариф</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2>Контакты</h2>
+        <form class="contact-form">
+            <input type="text" placeholder="Ваше имя" required>
+            <input type="email" placeholder="Ваш email" required>
+            <textarea placeholder="Ваше сообщение" rows="4" required></textarea>
+            <button type="submit">Отправить</button>
+        </form>
+        <div class="contact-info">
+            <p>Email: support@remotelink.com</p>
+            <p>Телефон: +7 (900) 123-45-67</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+    </footer>
+
+    <div id="buyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2>Выберите тариф</h2>
+            <div class="form-group">
+                <label for="plan">Тариф:</label>
+                <select id="plan">
+                    <option id="plan-item-1">Бесплатный - 0₽</option>
+                    <option id="plan-item-2">Стандарт - 499₽/мес</option>
+                    <option id="plan-item-3">Премиум - 999₽/мес</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name">Имя:</label>
+                <input type="text" id="name" placeholder="Введите ваше имя">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Введите ваш email">
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input type="password" id="password" placeholder="Введите пароль">
+            </div>
+            <button class="buy-btn" onclick="submitForm()">Оплатить</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal(tarif) {
+            if (tarif == 0) {
+                document.getElementById("plan-item-1").setAttribute("selected", "selected");
+            } else if (tarif == 1) {
+                document.getElementById("plan-item-2").setAttribute("selected", "selected");
+            } else if (tarif == 2) {
+                document.getElementById("plan-item-3").setAttribute("selected", "selected");
+            }
+            document.getElementById("buyModal").style.display = "block";
+        }
+        function closeModal() {
+            document.getElementById("buyModal").style.display = "none";
+        }
+        function submitForm() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+            let plan = document.getElementById("plan").value;
+            if (name && email && password) {
+                alert("Спасибо за покупку! Вы выбрали: " + plan);
+                closeModal();
+            } else {
+                alert("Пожалуйста, заполните все поля.");
+            }
+        }
+    </script>
+</body>
+</html>
